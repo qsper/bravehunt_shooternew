@@ -4,7 +4,7 @@ onready var bullet_manager = $BulletManager
 onready var player: Player = $Player
 onready var gui = $GUI
 
-var kills = 0
+var kills = 2
 
 func _ready() -> void:
 	randomize()
