@@ -1,0 +1,132 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://UI/LexendMega.tres" type="DynamicFont" id=1]
+[ext_resource path="res://UI/GUI.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0.811765, 0, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0, 0, 0, 1 )
+
+[node name="GUI" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_constants/margin_right = 40
+custom_constants/margin_top = 40
+custom_constants/margin_left = 40
+custom_constants/margin_bottom = 40
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Rows" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 984.0
+margin_bottom = 560.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TopRow" type="HBoxContainer" parent="MarginContainer/Rows"]
+margin_right = 944.0
+margin_bottom = 73.0
+mouse_filter = 2
+size_flags_vertical = 3
+
+[node name="Scoree" type="Label" parent="MarginContainer/Rows/TopRow"]
+margin_top = 14.0
+margin_right = 121.0
+margin_bottom = 59.0
+custom_fonts/font = ExtResource( 1 )
+text = "Kills:"
+
+[node name="Score" type="Label" parent="MarginContainer/Rows/TopRow"]
+margin_left = 125.0
+margin_top = 14.0
+margin_right = 152.0
+margin_bottom = 59.0
+custom_fonts/font = ExtResource( 1 )
+text = "0"
+
+[node name="MiddleRow" type="HBoxContainer" parent="MarginContainer/Rows"]
+margin_top = 77.0
+margin_right = 944.0
+margin_bottom = 442.0
+mouse_filter = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 5.0
+
+[node name="BottomRow" type="HBoxContainer" parent="MarginContainer/Rows"]
+margin_top = 446.0
+margin_right = 944.0
+margin_bottom = 520.0
+mouse_filter = 2
+size_flags_vertical = 3
+
+[node name="HealthSection" type="CenterContainer" parent="MarginContainer/Rows/BottomRow"]
+margin_right = 200.0
+margin_bottom = 74.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBar" type="ProgressBar" parent="MarginContainer/Rows/BottomRow/HealthSection"]
+margin_top = 22.0
+margin_right = 200.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 200, 30 )
+mouse_filter = 2
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+value = 50.0
+percent_visible = false
+
+[node name="AmmoSection" type="HBoxContainer" parent="MarginContainer/Rows/BottomRow"]
+margin_left = 204.0
+margin_right = 944.0
+margin_bottom = 74.0
+mouse_filter = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="CurrentAmmo" type="Label" parent="MarginContainer/Rows/BottomRow/AmmoSection"]
+margin_left = 604.0
+margin_top = 14.0
+margin_right = 655.0
+margin_bottom = 59.0
+custom_fonts/font = ExtResource( 1 )
+text = "30"
+
+[node name="AmmoSeparator" type="Label" parent="MarginContainer/Rows/BottomRow/AmmoSection"]
+margin_left = 659.0
+margin_top = 14.0
+margin_right = 685.0
+margin_bottom = 59.0
+custom_fonts/font = ExtResource( 1 )
+text = "/"
+
+[node name="MaxAmmo" type="Label" parent="MarginContainer/Rows/BottomRow/AmmoSection"]
+margin_left = 689.0
+margin_top = 14.0
+margin_right = 740.0
+margin_bottom = 59.0
+custom_fonts/font = ExtResource( 1 )
+text = "30"

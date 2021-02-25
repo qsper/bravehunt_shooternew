@@ -1,0 +1,49 @@
+extends KinematicBody2D
+class_name Player
+
+#signal player_fired_bullet(bullet, position, direction)
+#signal player_health_changed(new_health)
+#signal died
+
+
+export (int) var speed = 300
+
+onready var weapon_menager = $WeaponManager
+onready var health_stat = $Health
+onready var score_stat = $Score
+
+func _ready():
+	print('Player._ready call')
+	# connect("weapon_fired", self, "ammo_changed")
+	pass
+
+func _physics_process(delta: float) -> void:
+	var movement_direction := Vector2.ZERO
+	
+	if Input.is_action_pressed("up"):
+		movement_direction.y = -1
+	if Input.is_action_pressed("down"):
+		movement_direction.y = 1
+	if Input.is_action_pressed("left"):
+		movement_direction.x = -1
+	if Input.is_action_pressed("right"):
+		movement_direction.x = 1
+		
+	movement_direction = movement_direction.normalized()
+	move_and_slide(movement_direction * speed)
+	
+	look_at(get_global_mouse_position())
+	
+func handle_hit():
+	print("handle_hit call")
+	health_stat.health -= 20
+	GlobalSignals.emit_signal("gui_player_health_changed", health_stat.health)
+	print("player hit! ", health_stat.health)
+	if health_stat.health <= 0:
+		print("Zdechłeś")
+	
+func get_current_weapon() -> Weapon:
+	return weapon_menager.current_weapon
+	
+func counter():
+	GlobalSignals.emit_signal("gui_player_score_changed", score_stat.score)
