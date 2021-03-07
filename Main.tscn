@@ -1,4 +1,4 @@
-[gd_scene load_steps=120 format=2]
+[gd_scene load_steps=121 format=2]
 
 [ext_resource path="res://actors/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/Tilesheet/tilesheet_complete.png" type="Texture" id=6]
 [ext_resource path="res://Pause.gd" type="Script" id=7]
 [ext_resource path="res://UI/CustomCursor.tscn" type="PackedScene" id=8]
+[ext_resource path="res://First_aid_kit.tscn" type="PackedScene" id=9]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
@@ -1193,3 +1194,6 @@ __meta__ = {
 }
 
 [node name="CustomCursor" parent="." instance=ExtResource( 8 )]
+
+[node name="First_aid_kit" parent="." instance=ExtResource( 9 )]
+position = Vector2( -162.921, 179.57 )

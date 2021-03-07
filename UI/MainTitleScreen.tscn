@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://main_menu_bottoms/Button.tscn" type="PackedScene" id=1]
+[ext_resource path="res://UI/LexendMega.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/test.jpeg" type="Texture" id=3]
+
+[node name="MainTitleScreen" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 320, 319 )
+scale = Vector2( 1.69336, 1.09667 )
+texture = ExtResource( 3 )
+
+[node name="Start" parent="." instance=ExtResource( 1 )]
+margin_left = 376.0
+margin_top = 328.0
+margin_right = 576.0
+margin_bottom = 384.0
+focus_neighbour_top = NodePath("../Exit")
+focus_neighbour_bottom = NodePath("../Options")
+custom_fonts/font = ExtResource( 2 )
+reference_path = "res://Main.tscn"
+start_focused = true
+
+[node name="Options" parent="." instance=ExtResource( 1 )]
+margin_left = 376.0
+margin_top = 392.0
+margin_right = 576.0
+margin_bottom = 448.0
+focus_neighbour_top = NodePath("../Start")
+focus_neighbour_bottom = NodePath("../Exit")
+custom_fonts/font = ExtResource( 2 )
+text = "Options"
+
+[node name="Exit" parent="." instance=ExtResource( 1 )]
+margin_left = 376.0
+margin_top = 456.0
+margin_right = 576.0
+margin_bottom = 512.0
+focus_neighbour_top = NodePath("../Options")
+focus_neighbour_bottom = NodePath("../Start")
+custom_fonts/font = ExtResource( 2 )
+text = "Exit"

@@ -25,23 +25,14 @@ var actor_velocity: Vector2 = Vector2.ZERO
 func _ready():
 	set_state(State.PATROL)
 	
-
 func _physics_process(delta):
 	match current_state:
 		State.PATROL:
 			if not patrol_location_reached:
-				actor.move_and_slide(actor_velocity)
-				actor.rotate_toward(patrol_location)
-				if actor.global_position.distance_to(patrol_location) < 5:
-					patrol_location_reached = true
-					actor_velocity = Vector2.ZERO
-					patrol_timer.start()
+				on_patrol_state()
 		State.ENGAGE:
 			if player != null and weapon != null:
-				actor.rotate_toward(player.global_position)
-				var angle_to_player = actor.global_position.direction_to(player.global_position).angle()
-				if abs(actor.rotation - angle_to_player) < 0.1:
-					weapon.shoot()
+				on_engage_state()
 			else:
 				print("In the engage state, but no weapon/player")
 		_:
@@ -85,6 +76,21 @@ func _on_PatrolTimer_timeout():
 	patrol_location_reached = false
 	actor_velocity = actor.velocity_toward(patrol_location)
 	
+func on_patrol_state():
+	actor.move_and_slide(actor_velocity)
+	actor.rotate_toward(patrol_location)
+	if actor.global_position.distance_to(patrol_location) < 5:
+		patrol_location_reached = true
+		actor_velocity = Vector2.ZERO
+		patrol_timer.start()
+	
+func on_engage_state():
+	actor_velocity = actor.position.direction_to(player.position) * 150
+	actor.move_and_slide(actor_velocity)
+	actor.rotate_toward(player.global_position)
+	var angle_to_player = actor.global_position.direction_to(player.global_position).angle()
+	if abs(actor.rotation - angle_to_player) < 0.1:
+		weapon.shoot()
 
 
 

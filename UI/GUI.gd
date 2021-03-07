@@ -3,7 +3,7 @@ extends CanvasLayer
 onready var health_bar = $MarginContainer/Rows/BottomRow/HealthSection/HealthBar
 onready var current_ammo_label = $MarginContainer/Rows/BottomRow/AmmoSection/CurrentAmmo
 onready var max_ammo_label = $MarginContainer/Rows/BottomRow/AmmoSection/MaxAmmo
-onready var score = $MarginContainer/Rows/TopRow/Score
+onready var score_label = $MarginContainer/Rows/TopRow/Score
 
 var player: Player
 
@@ -19,6 +19,6 @@ func set_ammo_info(new_ammo: int, max_ammo: int):
 	current_ammo_label.text = str(new_ammo)
 	max_ammo_label.text = str(max_ammo)
 	
-func set_score_value(new_score: int):
+func set_kills_stat(kills: int):
 	print('set_new_score_value call')
-	score.text = str(score)
+	score_label.text = str(kills)

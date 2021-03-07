@@ -16,6 +16,8 @@ onready var muzzle_flash = $MuzzleFlash
 
 var current_ammo: int = max_ammo setget set_current_ammo
 
+var connected: bool = false
+
 func _ready():
 	print('Weapon._ready call')
 	muzzle_flash.hide()
@@ -26,6 +28,8 @@ func start_reload():
 	
 func _stop_reload():
 	current_ammo = max_ammo 
+	GlobalSignals.emit_signal("gui_ammo_changed", 
+								current_ammo, max_ammo)
 	#_prywatna funkcja
 	
 func set_current_ammo(new_ammo: int):

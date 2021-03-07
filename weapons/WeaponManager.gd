@@ -14,11 +14,15 @@ func _ready():
 		weapon.hide()
 		
 	current_weapon.show()
+	connectWeaponFiredEvent(current_weapon)
 	
-	#emitGuiAmmoChanged()
 	
 func connectWeaponFiredEvent(weapon: Weapon):
-	current_weapon.connect("weapon_fired", self, "on_weapon_fired")
+	if weapon.connected == false:
+		weapon.connect("weapon_fired", self, "on_weapon_fired")
+		weapon.connected = true
+	pass 
+	
 	
 func emitGuiAmmoChanged():
 	var cAmmo = current_weapon.current_ammo
@@ -51,12 +55,9 @@ func switch_weapon(weapon: Weapon):
 func _process(delta: float) -> void:
 	if not current_weapon.semi_auto and Input.is_action_pressed("shoot"):
 		current_weapon.shoot()
-		
-		
-		
 
 func _unhandled_input(event: InputEvent) -> void:
-	emitGuiAmmoChanged() #zbyt dużo wykonań funkcji
+	 #zbyt dużo wykonań funkcji
 	if current_weapon.semi_auto and event.is_action_released("shoot"):
 		current_weapon.shoot()
 	elif event.is_action_released("reload"):

@@ -14,15 +14,40 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://weapons/Bullet.gd"
 }, {
+"base": "HBoxContainer",
+"class": "ContributorClass",
+"language": "GDScript",
+"path": "res://addons/github-integration/scripts/ContributorClass.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://actors/Enemy.gd"
+}, {
+"base": "PanelContainer",
+"class": "GistItem",
+"language": "GDScript",
+"path": "res://addons/github-integration/scripts/GistItem.gd"
+}, {
 "base": "",
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://git_api.gdns"
 }, {
+"base": "HBoxContainer",
+"class": "InvitationItem",
+"language": "GDScript",
+"path": "res://addons/github-integration/scripts/InvitationItem.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
 "path": "res://actors/Player.gd"
+}, {
+"base": "PanelContainer",
+"class": "RepositoryItem",
+"language": "GDScript",
+"path": "res://addons/github-integration/scripts/RepositoryItem.gd"
 }, {
 "base": "Node2D",
 "class": "Weapon",
@@ -31,8 +56,13 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Bullet": "",
+"ContributorClass": "",
+"Enemy": "",
+"GistItem": "",
 "GitAPI": "",
+"InvitationItem": "",
 "Player": "",
+"RepositoryItem": "",
 "Weapon": ""
 }
 
@@ -45,10 +75,19 @@ config/icon="res://icon.png"
 [autoload]
 
 GlobalSignals="*res://globals/GlobalSignals.gd"
+PluginSettings="*res://addons/github-integration/scripts/PluginSettings.gd"
+IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
+UserData="*res://addons/github-integration/scripts/user_data.gd"
+RestHandler="*res://addons/github-integration/scenes/RestHandler.tscn"
+Global="*res://Global.gd"
 
 [display]
 
 window/stretch/mode="2d"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "github-integration" )
 
 [gdnative]
 

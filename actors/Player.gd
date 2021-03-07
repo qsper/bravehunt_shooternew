@@ -7,6 +7,7 @@ class_name Player
 
 
 export (int) var speed = 300
+var kills = 0
 
 onready var weapon_menager = $WeaponManager
 onready var health_stat = $Health
@@ -14,8 +15,10 @@ onready var score_stat = $Score
 
 func _ready():
 	print('Player._ready call')
-	# connect("weapon_fired", self, "ammo_changed")
-	pass
+	Global.player = self
+	
+func _exit_tree():
+	Global.player = null
 
 func _physics_process(delta: float) -> void:
 	var movement_direction := Vector2.ZERO
@@ -45,5 +48,11 @@ func handle_hit():
 func get_current_weapon() -> Weapon:
 	return weapon_menager.current_weapon
 	
-func counter():
-	GlobalSignals.emit_signal("gui_player_score_changed", score_stat.score)
+func healing():
+	health_stat.health += 20
+	GlobalSignals.emit_signal("gui_player_health_changed", health_stat.health)
+
+func on_enemyDied():
+	kills += 1
+	GlobalSignals.emit_signal("gui_kill_stat", kills)
+	print(kills)
