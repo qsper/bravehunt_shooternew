@@ -1,6 +1,15 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Score.gd" type="Script" id=1]
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
+
+export (int) var score = 0 setget set_score
+
+
+func set_score(new_score: int):
+	score = 0
+"
 
 [node name="Score" type="Node2D"]
-script = ExtResource( 1 )
+visible = false
+script = SubResource( 1 )

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://main_menu_bottoms/Button.tscn" type="PackedScene" id=1]
+[ext_resource path="res://UI/LexendMega.tres" type="DynamicFont" id=2]
+
+[node name="Options" type="Node2D"]
+
+[node name="Button" parent="." instance=ExtResource( 1 )]
+margin_left = 70.0198
+margin_top = 58.5099
+margin_right = 268.02
+margin_bottom = 119.51
+rect_scale = Vector2( 1.66728, 2.27879 )
+custom_fonts/font = ExtResource( 2 )
+text = "Go back"
+reference_path = "res://UI/MainTitleScreen.tscn"

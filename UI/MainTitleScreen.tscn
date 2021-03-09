@@ -31,6 +31,7 @@ focus_neighbour_top = NodePath("../Start")
 focus_neighbour_bottom = NodePath("../Exit")
 custom_fonts/font = ExtResource( 2 )
 text = "Options"
+reference_path = "res://main_menu/Options.tscn"
 
 [node name="Exit" parent="." instance=ExtResource( 1 )]
 margin_left = 376.0

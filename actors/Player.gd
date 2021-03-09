@@ -1,17 +1,11 @@
 extends KinematicBody2D
 class_name Player
 
-#signal player_fired_bullet(bullet, position, direction)
-#signal player_health_changed(new_health)
-#signal died
-
-
 export (int) var speed = 300
-var kills = 0
+export (int) var kills = 0
 
 onready var weapon_menager = $WeaponManager
 onready var health_stat = $Health
-onready var score_stat = $Score
 
 func _ready():
 	print('Player._ready call')
@@ -31,7 +25,7 @@ func _physics_process(delta: float) -> void:
 		movement_direction.x = -1
 	if Input.is_action_pressed("right"):
 		movement_direction.x = 1
-		
+	
 	movement_direction = movement_direction.normalized()
 	move_and_slide(movement_direction * speed)
 	

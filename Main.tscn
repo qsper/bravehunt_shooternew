@@ -1167,6 +1167,15 @@ smoothing_enabled = true
 [node name="Enemy" parent="." instance=ExtResource( 4 )]
 position = Vector2( 420, 163 )
 
+[node name="Enemy2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 670.217, 59.6168 )
+
+[node name="Enemy3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 733.146, 215.441 )
+
+[node name="Enemy4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 599.797, 267.882 )
+
 [node name="BulletManager" type="Node2D" parent="."]
 script = ExtResource( 3 )
 
@@ -1197,3 +1206,6 @@ __meta__ = {
 
 [node name="First_aid_kit" parent="." instance=ExtResource( 9 )]
 position = Vector2( -162.921, 179.57 )
+
+[node name="First_aid_kit2" parent="." instance=ExtResource( 9 )]
+position = Vector2( -114.975, 169.082 )

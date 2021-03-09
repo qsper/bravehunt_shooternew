@@ -91,6 +91,3 @@ func on_engage_state():
 	var angle_to_player = actor.global_position.direction_to(player.global_position).angle()
 	if abs(actor.rotation - angle_to_player) < 0.1:
 		weapon.shoot()
-
-
-

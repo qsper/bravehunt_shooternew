@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://actors/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://assets/Spritesheet/spritesheet_characters.png" type="Texture" id=2]
@@ -9,8 +9,16 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24, 24 )
 
-[sub_resource type="CapsuleShape2D" id=2]
-radius = 128.0
+[sub_resource type="Theme" id=2]
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.266667, 1, 0, 1 )
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 208.287
 height = 80.0
 
 [node name="Enemy" type="KinematicBody2D"]
@@ -30,6 +38,25 @@ position = Vector2( 22.2739, 12.0208 )
 
 [node name="Health" parent="." instance=ExtResource( 4 )]
 
+[node name="HealthBar" type="ProgressBar" parent="Health"]
+light_mask = -2147483647
+margin_left = -20.0
+margin_top = -37.0
+margin_right = 8.0
+margin_bottom = -28.0
+theme = SubResource( 2 )
+custom_styles/fg = SubResource( 3 )
+custom_styles/bg = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0.172549, 0.172549, 1 )
+custom_colors/font_color_shadow = Color( 1, 0, 0, 1 )
+step = 1.0
+value = 100.0
+rounded = true
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="AI" type="Node2D" parent="."]
 script = ExtResource( 5 )
 
@@ -38,8 +65,7 @@ script = ExtResource( 5 )
 ]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AI/PlayerDetectionZone"]
-position = Vector2( 80, 0 )
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [node name="PatrolTimer" type="Timer" parent="AI"]
 wait_time = 3.0
